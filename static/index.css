@@ -1,0 +1,53 @@
+body {
+    background-color: #089BAB;
+    color: #ffff;
+    font-weight: bold;
+}
+
+.columnas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+img {
+    max-width: 100%;
+    margin-top: 9em;
+    margin-left: 7em;
+}
+
+.datospp {
+    margin-left: 10em;
+    color: #ffff;
+}
+
+.infoForm {
+    border-radius: 17px;
+    width: 70%;
+    margin-top: 8em;
+    display: flex;
+    box-shadow: 0 0 1em rgba(0, 0, 0, .25);
+    padding: 60px 10px 10px;
+}
+
+#post-ndoc,
+#post-nombre,
+#post-aplldos,
+#post-email,
+#post-tel,
+#post-direcc,
+#post-sex {
+    margin-left: 3em;
+    border: 1px solid aqua;
+    width: 200%;
+    height: 17px;
+}
+
+label {
+    margin-left: 3em;
+}
+
+#btn-pp {
+    margin-left: 5em;
+    width: 50%;
+    height: 3em;
+}

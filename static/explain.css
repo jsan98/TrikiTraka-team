@@ -1,0 +1,45 @@
+body {
+    background-color: #089BAB;
+    color: #ffff;
+}
+
+.columnasexplain {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.florence {
+    max-width: 100%;
+    margin-top: 8em;
+    margin-left: 9em;
+}
+
+.datosex {
+    margin-left: 3em;
+    font-size: 1.5rem;
+}
+
+#btn-iniDiag {
+    margin-left: 25em;
+    width: 15%;
+    height: 3em;
+}
+
+.infoExplain {
+    margin-top: 1em;
+}
+
+.h1ex {
+    margin-left: 7em;
+}
+
+.temp {}
+
+.text {}
+
+.infocard {
+    gap: 2em;
+    margin-top: 1em;
+    display: flex;
+    font-size: 1.6rem;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../static/pulso.css">
+
+</head>
+
+<body>
+    <div class="columnaspulso">
+        <div class="florenceimg2">
+
+            <img class="florence2" src="../static/svg/florence.svg">
+            <button id="btn-Pulso" class="btn-Pulso">Siguiente</button>
+        </div>
+
+        <div class="PulsoAna">
+            <div class="Section-onePulso">
+                <img class="pulsoSvg" src="../static/svg/pulso.svg">
+                <h1 class="PulsoTextHeader">Signos Vitales</h1>
+                <div class="boxPulGt">
+                    <p>Coloque su mano en esta posición durante un minuto, mientras Florence toma el pulso.</p>
+
+                    <img src="../static/svg/pulsoimg1.svg">
+
+                    <img src="../static/svg/imgpulso2.svg">
+
+                    <p>Promedio</p>
+                    <p>90/lpm</p>
+
+
+                </div>
+            </div>
+
+            <div class="section-twopulso">
+                <img src="../static/svg/temp.svg">
+                <p>37.5</p>
+                <img src="../static/svg/pulso.svg">
+                <p>90/lpm</p>
+                <img src="../static/svg/peso.svg">
+                <img src="../static/svg/tensionArt.svg">
+                <img src="../static/svg/saturacion.svg">
+                <img src="../static/svg/altura.svg">
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
