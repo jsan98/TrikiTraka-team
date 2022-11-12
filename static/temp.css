@@ -5,7 +5,7 @@ body {
 
 .columnastemp {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
 .dialogo1 {
@@ -13,6 +13,7 @@ body {
 }
 
 .florence1 {
+   
     margin-top: -4em;
     margin-left: 9em;
 }
@@ -20,17 +21,23 @@ body {
 .btn-temp {
     margin-bottom: 2em;
     margin-top: 3em;
-    width: 15%;
-    height: 3em;
+    width: 20%;
+    height: 4em;
     margin-left: 25em;
+    border-radius: 17px;
+    cursor: pointer;
 }
+
+.btn-temp:hover[
+
+]
 
 .florenceimg1 {
     display: grid;
 }
 
 .tempAna {
-    border: 1px solid red;
+   
     display: grid;
 }
 
@@ -40,15 +47,30 @@ body {
 }
 
 .boxTemCam {
-    border: 1px solid red;
+  
     height: 23em;
     width: 75%;
     margin-left: 6em;
+    margin-bottom: 2em;
+    background-color:#37a9b5;
+    border-radius: 20px;
+    box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.25);
 }
 
+.tempface{
+    margin-top: 2em;
+    margin-left: 7em;
+    
+}
 .section-two {
-    border: solid 1px red;
+   
     height: 23em;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+.tempdatop{
+    margin-top:-5em ;
+    margin-left: 8em;
+   
+    width: 5%;
 }

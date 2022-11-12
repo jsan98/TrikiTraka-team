@@ -1,58 +1,87 @@
-<!DOCTYPE html>
-<html>
+body {
+    background-color: #089BAB;
+    color: #ffff;
+}
 
-<head>
-    <link rel="stylesheet" href="../static/pulso.css">
+.columnaspulso {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
 
-</head>
+.florence2 {
+    max-width: 100%;
+    margin-top: 8em;
+    margin-left: 9em;
+}
 
-<body>
-    <div class="columnaspulso">
-        <div class="florenceimg2">
+.btn-Pulso {
+    margin-bottom: 2em;
+    margin-top: 3em;
+    width: 20%;
+    height: 4em;
+    margin-left: 25em;
+    border-radius: 17px;
+    cursor: pointer;
+}
+.PulsoTextHeader{
 
-            <img class="florence2" src="../static/svg/florence.svg">
-            <button id="btn-Pulso" class="btn-Pulso">Siguiente</button>
-        </div>
+margin-left: 4em;
+margin-top: -2.5em;
 
-        <div class="PulsoAna">
-            <div class="Section-onePulso">
-                <img class="pulsoSvg" src="../static/svg/pulso.svg">
-                <h1 class="PulsoTextHeader">Signos Vitales</h1>
-                <div class="boxPulGt">
-                    <p>Coloque su mano en esta posición durante un minuto, mientras Florence toma el pulso.</p>
+    width: 70%;
+}
+.Section-onePulso {
+    display: flex;
+}
 
-                    <img src="../static/svg/pulsoimg1.svg">
+.section-twopulso {
+    display: flex;
+}
+.boxPulGt{
+    
+    margin-top: 7em;
+    margin-left:-20em;
+    box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.25);
+}
+.pulsoSvg{
 
-                    <img src="../static/svg/imgpulso2.svg">
+}
+.textpulsoimg1{
+    margin-left: 21em;
+    margin-top: -8em;
+}
+.pulsogift{
+    margin-top: 4em;
+}
+.textgift1{
+    margin-left: 17em;
+    margin-top: -6em;
+}
 
-                    <p>Promedio</p>
-                    <p>90/lpm</p>
+#textgift2{
+    margin-left: 17em;
+    margin-top: 0;
+}
+.section-twopulso{
+    margin-top: 3em;
+height: 23em;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.25);
+border-radius: 35px;
+background: #ACEBF2;;
+color: green;
+}
+.tempdatop{
+    margin-top:-5em ;
+    margin-left: 8em;
+   
+    width: 5%;
+}
 
-
-                </div>
-            </div>
-
-            <div class="section-twopulso">
-                <img src="../static/svg/temp.svg">
-                <p>37.5</p>
-                <img src="../static/svg/pulso.svg">
-                <p>90/lpm</p>
-                <img src="../static/svg/peso.svg">
-                <img src="../static/svg/tensionArt.svg">
-                <img src="../static/svg/saturacion.svg">
-                <img src="../static/svg/altura.svg">
-
-
-
-
-
-            </div>
-
-
-
-        </div>
-    </div>
-
-</body>
-
-</html>
+.pulsodatop{
+    margin-top:-4em ;
+    margin-left: 8em;
+   
+    width: 5%;
+}
