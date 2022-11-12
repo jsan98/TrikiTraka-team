@@ -35,6 +35,17 @@ db = SQL("sqlite:///florence.db")
 @login_required
 def index():
     if request.method == "POST":
+        rows=db.execute("select * from pacientes")
+
+        return redirect("/",rows=rows)
+    else:
+        rows=db.execute("select * from pacientes")
+        return render_template("dashboard.html",rows=rows)
+
+
+@app.route("/kiosco", methods=["GET", "POST"])
+def kiosco():
+    if request.method == "POST":
 
         return redirect("/")
     else:
@@ -116,6 +127,51 @@ def register():
         return redirect("/")
     else:
         return render_template("register.html")
+
+
+@app.route("/rpacientes", methods=["GET", "POST"])
+@login_required
+def rpacientes():
+    if request.method == "POST":
+        rows=db.execute("insert into pacientes (nombres,apellidos,correo,telefono,direccion,sexo) \
+            values (:nombres,:apellidos,:correo,:telefono,:direccion,:sexo)",
+            nombres=request.form.get("nombres"),\
+            apellidos=request.form.get("apellidos"),\
+            correo=request.form.get("correo") ,  \
+            telefono=request.form.get("telefono"),  \
+            direccion=request.form.get("direccion"),\
+            sexo=request.form.get("sexo")   )
+
+        rclientes=rows
+        return render_template("rpacientes.html")
+
+    else:
+        return render_template("rpacientes.html")
+
+@app.route('/eliminarPaciente/<int:id>')
+@login_required
+def eliminarPaciente(id):
+    db.execute("DELETE FROM pacientes where id=:idInv",idInv=id)
+    return redirect(url_for('index'))
+
+@app.route('/mpacientes/<int:id>', methods=["GET","POST"])
+@login_required
+def mpacientes(id):
+    if request.method == 'POST':
+        db.execute('UPDATE pacientes set nombres = :nombres, apellidos = :apellidos, correo=:correo,telefono=:telefono,sexo=:sexo, \
+            direccion = :direccion WHERE id = :idInv', \
+                 nombres=request.form.get("nombres"),\
+            apellidos=request.form.get("apellidos"),\
+            correo=request.form.get("correo") ,  \
+            telefono=request.form.get("telefono"),  \
+            direccion=request.form.get("direccion"),\
+            sexo=request.form.get("sexo")
+            , idInv = id)
+        return redirect(url_for('index'))
+    else:
+        rows = db.execute('select * from pacientes where id = :idInv', idInv = id)
+        return render_template('mpacientes.html', rows=rows)
+
 
 
 

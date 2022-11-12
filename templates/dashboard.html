@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Dashboard
+{% endblock %}
+
+{% block main %}
+<div class="container">
+<h1 class="display display-4">Registros</h1>
+</div>
+<div class='text-right'>
+  <a href='/rpacientes' class='btn btn-primary'>Registrar nuevo paciente</a>
+</div>
+</div>
+<br>
+<br>
+<div class="container">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Escribe el nombre del paciente.." title="Type in a name"  style="background: url(&quot;static/p.png&quot;) left center no-repeat rgb(255, 255, 255);"/>
+
+<table class="table table-striped" id="myTable">
+        <tr>
+
+            <td>Nombres del paciente</td>
+            <td>Apellidos del paciente</td>
+            <td>Numero de Telefono</td>
+            <td>Correo</td>
+            <td>Direccion</td>
+            <td>Sexo</td>
+            <td>Opciones</td>
+        </tr>
+        {%for rows in rows%}
+        <tr>
+            <td>{{rows.nombres}}</td>
+            <td>{{rows.apellidos}}</td>
+            <td>{{rows.telefono}}</td>
+            <td>{{rows.correo}}</td>
+            <td>{{rows.direccion}}</td>
+            <td>{{rows.sexo}}</td>
+            <td><a href='/mpacientes/{{rows.id}}'>Actualizar</a><br><a href='/eliminarPaciente/{{rows.id}}'>Eliminar</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+     <script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+{% endblock %}
