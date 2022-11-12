@@ -415,14 +415,14 @@ class Validation
                 if (invalidString)
                 {
                     this.showWarning(input, inputId, invalidString);
-                    this.submitDisabled(true, "Error, por favor revise su formulario");
+                    this.submitDisabled(true, "Error, complete su formulario");
                     // Stop submission
                     e.preventDefault();
                 }
                 if (invalidCheckString)
                 {
                     this.showWarning(passConfirm, passConfirmId, invalidCheckString);
-                    this.submitDisabled(true, "Error, por favor revise su formulario");
+                    this.submitDisabled(true, "Error, complete su formulario");
                     // Stop submission
                     e.preventDefault();
                 }
