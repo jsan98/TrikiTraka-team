@@ -320,7 +320,22 @@ p{
     </div>
 
                     <div class="form-group">
-                        <input autocomplete="off" name="username" id="name" type="text" class="form-control" placeholder="Nombre de Usuario">
+                        <input autocomplete="off" name="username" id="name" type="text" class="form-control" placeholder="Usuario">
+                    </div>
+                    <div class="form-group">
+                        <input autocomplete="off" name="nombres" id="name1" type="text" class="form-control" placeholder="Nombres de Usuario">
+                    </div>
+                    <div class="form-group">
+                        <input autocomplete="off" name="apellidos" id="name2" type="text" class="form-control" placeholder="Apellidos de Usuario">
+                    </div>
+                    <div class="form-group">
+                        <input autocomplete="off" name="cedula" id="name3" type="text" class="form-control" placeholder="Cédula del Usuario">
+                    </div>
+                    <div class="form-group">
+                        <input autocomplete="off" name="telefono" id="name4" type="text" class="form-control" placeholder="Número Celular de Usuario">
+                    </div>
+                    <div class="form-group">
+                        <input autocomplete="off" name="direccion" id="name5" type="text" class="form-control" placeholder="Dirección de Usuario">
                     </div>
                     <div class="form-group">
 
@@ -352,6 +367,7 @@ p{
         form.requireText("name2", 1, 20, [" "], []);
         form.requireText("name3", 1, 20, [" "], []);
         form.requireText("name4", 1, 20, [" "], []);
+        form.requireText("name5", 1, 20, [" "], []);
         form.requireEmail("email", 4, 30, [" "], ["@"]);
         form.registerPassword("password", 6, 20, [" "], [], "confirm");
     </script>

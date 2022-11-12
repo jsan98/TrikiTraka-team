@@ -5,11 +5,19 @@
 {% endblock %}
 
 {% block main %}
+<div class="container">
+<div style="background-color: #CEEBEE;box-shadow: 5px;" class="jumbotron jumbotron-fluid">
+    <h1 class="display display-4 text-center">Actualizar Paciente</h1>
+    
+  
 <div class="col-4" style="margin-left:35% ;">
 {%for rows in rows%}
 
     <form action="/mpacientes/{{rows.id}}" method="post">
         <div class="form-group">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="cedula" placeholder="Cédula del paciente" type="text" value="{{rows.cedula}}"/>
+            </div>
             <input autocomplete="off"  autofocus class="form-control" name="nombres" placeholder="Nombres del paciente" type="text" value="{{rows.nombres}}"/>
         </div>
         <div class="form-group">
@@ -32,10 +40,12 @@
                     <option value="Prefiero no decir">Prefiero no decir</option>
             </select>
         </div>
-        <button class="btn btn-primary" type="submit">Actualizar Paciente</button>
+        <button class="btn btn-primary" style="background-color: #738FFF;" type="submit">Actualizar Paciente</button>
     </form>
 
 
     {%endfor%}
     </div>
+      
+</div>
 {% endblock %}

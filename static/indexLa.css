@@ -8,18 +8,18 @@
 }
  #colors
  {
-    background-color: #80d6ff;
+    background-color: #089BAB;
  }
 
  @media (max-width: 499px) {
     #colors{
-      background-color: #457e71;
+      background-color: #089BAB;
     }
   }
 
   @media (max-width: 499px) {
     #colors {
-      background-color: #457e71;
+      background-color: #089BAB;
     }
   }
 
@@ -53,11 +53,11 @@
 }
 .color
 {
-    background-color: #50B8A0;
+    background-color: #089BAB;
 }
 .nav {
     height: 60px;
-    background-color: #42a5f5;
+    background-color: #089BAB;
 
 }
 .pos
@@ -85,11 +85,11 @@ h4 {
 #nav-a
 {
     border-radius: 200px;
-    background-color: #42a5f5;
+    background-color: #089BAB;
 }
 #nav-b
 {
-    background-color: #42a5f5;
+    background-color: #089BAB;
 }
 
 .formulario{
@@ -115,7 +115,7 @@ h4 {
 {
     width: 400px;
     height: 70px;
-    background-color: #50B8A0;
+    background-color: #089BAB;
     color: white;
     padding: 10px;
     border-radius: 15px;

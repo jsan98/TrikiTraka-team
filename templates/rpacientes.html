@@ -5,33 +5,44 @@
 {% endblock %}
 
 {% block main %}
-<div class="col-4" style="margin-left:35% ;">
-    <h1 class="display display-4">Registrar Paciente</h1>
-    <form action="/rpacientes" method="post">
-        <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="nombres" placeholder="Nombres del paciente" type="text"/>
+<div class="container">
+<div style="background-color: #CEEBEE;box-shadow: 5px;" class="jumbotron jumbotron-fluid">
+    <h1 class="display display-4 text-center">Registrar Paciente</h1>
+        <div class="col-4" style="margin-left:35% ;">
+            
+            <form action="/rpacientes" method="post">
+                <div class="form-group">
+                    <input autocomplete="off" autofocus class="form-control" name="cedula" placeholder="Cédula del paciente" type="text"/>
+                </div>
+                <div class="form-group">
+                    <input autocomplete="off" autofocus class="form-control" name="nombres" placeholder="Nombres del paciente" type="text"/>
+                </div>
+                <div class="form-group">
+                    <input autocomplete="off" autofocus class="form-control" name="apellidos" placeholder="apellidos del paciente" type="text"/>
+                </div>
+                <div class="form-group">
+                    <input autocomplete="off" autofocus class="form-control" name="correo" placeholder="correo del paciente" type="text"/>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="telefono" placeholder="Numero de telefono del paciente" type="number"/>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="direccion" placeholder="Direccion" type="text"/>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" name="sexo">
+                        <option disabled selected value="">Sexo</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Prefiero no decir">Prefiero no decir</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" style="background-color: #738FFF;" type="submit">Registrar Paciente</button>
+            </form>
         </div>
-        <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="apellidos" placeholder="apellidos del paciente" type="text"/>
-        </div>
-        <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="correo" placeholder="correo del paciente" type="text"/>
-        </div>
-        <div class="form-group">
-            <input class="form-control" name="telefono" placeholder="Numero de telefono del paciente" type="number"/>
-        </div>
-        <div class="form-group">
-            <input class="form-control" name="direccion" placeholder="Direccion" type="text"/>
-        </div>
-        <div class="form-group">
-            <select class="form-control" name="sexo">
-                <option disabled selected value="">Sexo</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Femenino">Femenino</option>
-                    <option value="Prefiero no decir">Prefiero no decir</option>
-            </select>
-        </div>
-        <button class="btn btn-primary" type="submit">Registrar Paciente</button>
-    </form>
-</div>
+    </div>
+ 
+
+
+
 {% endblock %}

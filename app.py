@@ -120,7 +120,13 @@ def register():
         elif ps != psa:
             return apology("Las contraseñas no coinciden",400 )
         elif not userE :
-            rows = db.execute("INSERT INTO users (id,user,pass) values (NULL,:username,:hashh) ",username = user, hashh=generate_password_hash(ps) )
+            rows = db.execute("INSERT INTO users (id,user,pass,cedula,nombres,apellidos,telefono,direccion) values (NULL,:username,:hashh,:cedula,:nombres,:apellidos,:telefono,:direccion) ",username = user,\
+            cedula=request.form.get("cedula"),\
+                 nombres=request.form.get("nombres"),\
+            apellidos=request.form.get("apellidos"),\
+            telefono=request.form.get("telefono"),  \
+            direccion=request.form.get("direccion"),\
+             hashh=generate_password_hash(ps) )
         else:
             return apology("El usuario ya existe",400 )
 
@@ -133,8 +139,9 @@ def register():
 @login_required
 def rpacientes():
     if request.method == "POST":
-        rows=db.execute("insert into pacientes (nombres,apellidos,correo,telefono,direccion,sexo) \
-            values (:nombres,:apellidos,:correo,:telefono,:direccion,:sexo)",
+        rows=db.execute("insert into pacientes (cedula,nombres,apellidos,correo,telefono,direccion,sexo) \
+            values (:cedula,:nombres,:apellidos,:correo,:telefono,:direccion,:sexo)",\
+            cedula=request.form.get("cedula"),\
             nombres=request.form.get("nombres"),\
             apellidos=request.form.get("apellidos"),\
             correo=request.form.get("correo") ,  \
@@ -158,8 +165,9 @@ def eliminarPaciente(id):
 @login_required
 def mpacientes(id):
     if request.method == 'POST':
-        db.execute('UPDATE pacientes set nombres = :nombres, apellidos = :apellidos, correo=:correo,telefono=:telefono,sexo=:sexo, \
+        db.execute('UPDATE pacientes set cedula=:cedula, nombres = :nombres, apellidos = :apellidos, correo=:correo,telefono=:telefono,sexo=:sexo, \
             direccion = :direccion WHERE id = :idInv', \
+                cedula=request.form.get("cedula"),\
                  nombres=request.form.get("nombres"),\
             apellidos=request.form.get("apellidos"),\
             correo=request.form.get("correo") ,  \

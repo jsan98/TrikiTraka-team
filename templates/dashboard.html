@@ -7,10 +7,11 @@
 {% block main %}
 <div class="container">
 <h1 class="display display-4">Registros</h1>
-</div>
 <div class='text-right'>
-  <a href='/rpacientes' class='btn btn-primary'>Registrar nuevo paciente</a>
+    <a href='/rpacientes' class='btn btn-primary' style="background-color: #738FFF;">Registrar nuevo paciente</a>
+  </div>
 </div>
+
 </div>
 <br>
 <br>
@@ -18,25 +19,28 @@
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Escribe el nombre del paciente.." title="Type in a name"  style="background: url(&quot;static/p.png&quot;) left center no-repeat rgb(255, 255, 255);"/>
 
 <table class="table table-striped" id="myTable">
+    <thead class="thead-dark">
         <tr>
-
-            <td>Nombres del paciente</td>
-            <td>Apellidos del paciente</td>
-            <td>Numero de Telefono</td>
-            <td>Correo</td>
-            <td>Direccion</td>
-            <td>Sexo</td>
-            <td>Opciones</td>
+            <th scope="col">Cédula del paciente</th>
+            <th scope="col">Nombres del paciente</th>
+            <th scope="col">Apellidos del paciente</th>
+            <th scope="col">Numero de Telefono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Opciones</th>
         </tr>
+    </thead>
         {%for rows in rows%}
         <tr>
+            <td scope="row">{{rows.cedula}}</td>
             <td>{{rows.nombres}}</td>
             <td>{{rows.apellidos}}</td>
             <td>{{rows.telefono}}</td>
             <td>{{rows.correo}}</td>
             <td>{{rows.direccion}}</td>
             <td>{{rows.sexo}}</td>
-            <td><a href='/mpacientes/{{rows.id}}'>Actualizar</a><br><a href='/eliminarPaciente/{{rows.id}}'>Eliminar</a></td>
+            <td><a style="text-decoration:none ;color:#FF738F" href='/mpacientes/{{rows.id}}'>Actualizar</a><br><a style="text-decoration:none ;color:#FF738F" href='/eliminarPaciente/{{rows.id}}'>Eliminar</a></td>
         </tr>
         {%endfor%}
     </table>
@@ -49,7 +53,7 @@ function myFunction() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
+    td = tr[i].getElementsByTagName("td")[1];
     if (td) {
       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
