@@ -4,16 +4,18 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions
 from werkzeug.security import check_password_hash, generate_password_hash
-
+import base64
 from helpers import apology, login_required
-
+from PIL import Image
+from io import BytesIO
 #Agregar hora local
 from datetime import datetime
 from pytz import timezone
 from config import Config
 from models import db, pacientes
 from cartoonizer import *
-
+import base64
+import random
 app = Flask(__name__)
 
 
@@ -72,6 +74,17 @@ def kiosco():
         #rows= db.execute("select * from users where id=:id",id=session["user_id"])
         return render_template("index.html")
 
+
+@app.route("/kiosco4", methods=["GET", "POST"])
+def kioscopaso():
+    if request.method == "POST":
+       
+
+        return redirect("/kiosco5")
+    else:
+        #rows= db.execute("select * from users where id=:id",id=session["user_id"])
+        return render_template("")
+
 @app.route("/kiosco2", methods=["GET", "POST"])
 def kiosco2():
     if request.method == "POST":
@@ -95,10 +108,8 @@ def upload():
             print('FileStorage:', fs)
             print('filename:', fs.filename)
             fs.save('image.jpg')
-            img_cartoon = carton("image.jpg")
-            filename = 'image_cartoon.jpg'
-           # session["img"] = 
-            cv2.imwrite(filename, img_cartoon)
+           
+            
             return 'Genial'
         else:
             return 'You forgot Snap!'
@@ -111,8 +122,25 @@ def kiosco3():
 
         return redirect("/")
     else:
-       
-        return render_template("avatar2.html")
+        img_cartoon = carton("image.jpg")
+            
+            
+        filename = 'image_cartoon.jpg'
+           
+        #session["img"] = 
+        #path = '../static'
+        cv2.imwrite(filename, img_cartoon)
+        img=""
+        img = Image.open('image_cartoon.jpg')
+        im_file = BytesIO()
+        img.save(im_file, format="JPEG")
+        im_bytes = im_file.getvalue()  # im_bytes: image in binary format.
+        im_b64 = base64.b64encode(im_bytes)
+        im_b64 = im_b64.decode("utf-8") 
+        #print(im_b64)
+        x = random.random()
+        img = "data:image/jpeg;base64," + im_b64
+        return render_template("avatar2.html",img=img)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
