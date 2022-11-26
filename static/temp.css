@@ -1,76 +1,65 @@
+html {
+    background-color: #00858B;
+}
+
 body {
-    background-color: #089BAB;
-    color: #ffff;
+    background-color: #00858B;
 }
 
-.columnastemp {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+.col {
+    color: white;
+    background-color: #00858B;
 }
 
-.dialogo1 {
-    margin-left: 27em;
+.temperaturah1 {
+    margin-top: 1em;
 }
 
-.florence1 {
-   
-    margin-top: -4em;
-    margin-left: 9em;
-}
-
-.btn-temp {
-    margin-bottom: 2em;
-    margin-top: 3em;
-    width: 20%;
-    height: 4em;
-    margin-left: 25em;
-    border-radius: 17px;
-    cursor: pointer;
-}
-
-.btn-temp:hover[
-
-]
-
-.florenceimg1 {
-    display: grid;
-}
-
-.tempAna {
-   
-    display: grid;
-}
-
-.tempTextHeader {
-    margin-left: 5em;
-    margin-top: -2em;
-}
-
-.boxTemCam {
+.datos {
+    margin-top: 1em;
   
-    height: 23em;
-    width: 75%;
-    margin-left: 6em;
-    margin-bottom: 2em;
-    background-color:#37a9b5;
-    border-radius: 20px;
-    box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.25);
+    width: 70%;
+    height: 300px;
+    background: #ACEBF2;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
 }
 
-.tempface{
+.boxesdata1{
+  
+    margin-top: 1em;
+    display: flex;
+    width: 85%;
+    border-radius: 17px;
+    background: rgba(255, 255, 255, 0.46);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.boximg1{
+    margin: 0.3em;
+    width: 55%;
+
+}
+
+.infodatapagesource{
     margin-top: 2em;
-    margin-left: 7em;
-    
 }
-.section-two {
-   
-    height: 23em;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.greet1{
+    margin-top: 1em;
+    margin-left: 1em;
 }
-.tempdatop{
-    margin-top:-5em ;
-    margin-left: 8em;
-   
-    width: 5%;
+
+.florenceimg{
+    margin-left: 5em;
+    margin-top: 3em;
+    width: 55%;
+}
+
+.btn-2{
+    margin-top: 2em;
+    margin-left: 13em;
+    width: 20%;
+    height: 45px;
+    border-radius: 17px;
 }

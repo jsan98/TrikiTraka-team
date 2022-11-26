@@ -1,0 +1,62 @@
+                    html {
+                        background-color: #00858B;
+                    }
+                    
+                    body {
+                        background-color: #00858B;
+                    }
+                    
+                    .col {
+                        color: white;
+                        background-color: #00858B;
+                    }
+                    
+                    .sign {
+                        margin-top: 1em;
+                        margin-bottom: 1em;
+                    }
+                    
+                    .cardfir {
+                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                        border-radius: 27px;
+                        background: rgba(255, 255, 255, 0.46);
+                        display: flex;
+                        margin-top: 0.5em;
+                        border-radius: 27px;
+                        width: 70%;
+                    }
+                    
+                    .imgstart,
+                    .p {
+                        margin: 0.4em
+                    }
+                    
+                    .p {
+                        margin-top: 2.3em;
+                    }
+                    
+                    .col2start {}
+                    
+                    .greet2 {
+                        margin-top: 1em;
+                        margin-left: 2em;
+                    }
+                    
+                    .florenceimg1 {
+                        margin-top: 4em;
+                        margin-left: 7em;
+                        width: 50%;
+                    }
+                    
+                    .pg {
+                        margin-top: 2em;
+                        margin-left: 12em;
+                    }
+                    
+                    .btn-2 {
+                        margin-top: 1em;
+                        width: 25%;
+                        height: 55px;
+                        margin-left: 13.5em;
+                        border-radius: 17px;
+                    }

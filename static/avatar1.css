@@ -1,0 +1,42 @@
+
+body {
+    background-color: #00858B;
+}
+html {
+    background-color: #00858B;
+}
+.container-fluid{
+    color: white;
+  
+    background-color: #00858B;
+}
+
+.textavatar1{
+    margin-top: 1em;
+    margin-left: 14em;
+}
+
+
+.steponeavatarbox{
+    margin-top: ;
+    background: #ACEBF2;;
+    border: 1px solid black;
+    width: 40%;
+    border-radius: 27px;
+    margin-left: 27em;
+    height: 450px;
+}
+
+.tomaliveavatar1{
+width: 75%;
+    margin-top: 2em;
+    margin-left: 4em;
+    border: 1px solid black;
+}
+.btnavatar1{
+    margin-left: 37em;
+    margin-top: 1em;
+    width: 20%;
+    height: 45px;
+    border-radius: 17px;
+}

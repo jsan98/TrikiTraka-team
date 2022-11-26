@@ -1,45 +1,58 @@
-body {
-    background-color: #089BAB;
-    color: #ffff;
+    body {
+        background-color: #00858B;
+    }
+    
+    html {
+        background-color: #00858B;
+    }
+    
+    .greet1 {
+        margin-top: 1em;
+        margin-left: 2em;
+    }
+    
+    .florenceimg {
+        margin-top: 4em;
+        margin-left: 7em;
+        width: 50%;
+    }
+    
+    .explainwords {
+        margin-top: 2em;
+        margin-left: 3em;
+    }
+    
+    .col {
+        color: white;
+        background-color: #00858B;
+    }
+    
+    .col2 {}
+    
+    .row {}
+    
+    .explainwords2 {
+        margin-left: 3em;
+        margin-top: 3em;
+    }
+    
+    .openhand,
+    .closehand,
+    .arrow {
+        margin-top: 15em;
+    }
+    
+    .col2 {
+        display: flex;
+        gap: 32px;
+    }
+    /*.arrow {
+    margin-left: 2em;
 }
 
-.columnasexplain {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+.openhand {
+    margin-left: 2em;
 }
 
-.florence {
-    max-width: 100%;
-    margin-top: 8em;
-    margin-left: 9em;
-}
-
-.datosex {
-    margin-left: 3em;
-    font-size: 1.5rem;
-}
-
-#btn-iniDiag {
-    margin-left: 25em;
-    width: 15%;
-    height: 3em;
-}
-
-.infoExplain {
-    margin-top: 1em;
-}
-
-.h1ex {
-    margin-left: 7em;
-}
-
-.temp {}
-
-.text {}
-
-.infocard {
-    gap: 2em;
-    margin-top: 1em;
-    display: flex;
-    font-size: 1.6rem;
-}
+.closehand {
+    margin-left: 3em;*/
