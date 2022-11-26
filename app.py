@@ -46,8 +46,17 @@ def index():
     else:
         #rows=db.execute("select * from pacientes")
         page = request.args.get('page', 1, type=int)
-        
+        lista_url = list()
         rows = pacientes.query.paginate(page=page, per_page=ROWS_PER_PAGE)
+        rows2 = pacientes.query.all()
+        for rows2 in rows2:
+            urlhash = generate_password_hash(str(rows2.id))
+            lista_url.append({'id':  rows2.id,
+                              'url':  str(urlhash)})
+        session["urls"] = lista_url
+        #for xd in session["urls"]:
+        #    print(type(xd["id"]))
+
         #print(rows)
         return render_template("dashboard.html",rows=rows)
 
@@ -171,10 +180,12 @@ def eliminarPaciente(id):
     db.execute("DELETE FROM users where id=:idInv",idInv=id)
     return redirect(url_for('index'))
 
-@app.route('/mpacientes/<int:id>', methods=["GET","POST"])
+@app.route('/mpacientes/<string:oid>', methods=["GET","POST"])
 @login_required
-def mpacientes(id):
+def mpacientes(oid):
+    valor = ""
     if request.method == 'POST':
+    
         db.execute('UPDATE users set rol_id = :rol, cedula=:cedula, nombres = :nombres, apellidos = :apellidos, correo=:correo,telefono=:telefono,sexo=:sexo, \
             direccion = :direccion WHERE id = :idInv', \
                 cedula=request.form.get("cedula"),\
@@ -185,12 +196,20 @@ def mpacientes(id):
             direccion=request.form.get("direccion"),\
             sexo=request.form.get("sexo"),
             rol = request.form.get("rol")
-            , idInv = id)
+            , idInv = session["valor"])
         return redirect(url_for('index'))
     else:
-        rows = db.execute('select * from users where id = :idInv', idInv = id)
+        valor = "aver"
+        #print(valor)
+        for xd in session["urls"]:
+            decode = check_password_hash(oid,str(xd["id"]))
+            print(decode)
+            if decode:
+                session["valor"] = int(xd["id"])
+        print(session["valor"])
+        rows = db.execute('select * from users where id = :idInv', idInv = session["valor"] )
         rol = db.execute('select * from roles')
-        nrol = db.execute('select * from roles r inner join users u on u.rol_id=r.id where u.id = :idInv',idInv = id)
+        nrol = db.execute('select * from roles r inner join users u on u.rol_id=r.id where u.id = :idInv',idInv = session["valor"])
         r = int(session["rol_asignado"])
         return render_template('mpacientes.html', rows=rows,rol=rol,nrol=nrol, r = r == 3)
 

@@ -7,6 +7,7 @@
 {% block main %}
 <div class="container">
 <h1 class="display display-4">Registros</h1>
+
 <div class='text-right'>
     <a href='/rpacientes' class='btn btn-primary' style="background-color: #738FFF;">Registrar nuevo paciente</a>
   </div>
@@ -43,7 +44,16 @@
             <td>{{rows.correo}}</td>
             <td>{{rows.direccion}}</td>
             <td>{{rows.sexo}}</td>
-            <td><a style="text-decoration:none ;color:#FF738F" href='/mpacientes/{{rows.id}}'>Actualizar</a><br><a style="text-decoration:none ;color:#FF738F" href='/eliminarPaciente/{{rows.id}}'>Eliminar</a></td>
+            <td>
+              {% for xd in session.urls %}
+              {%if xd.id == rows.id %}
+              <a style="text-decoration:none ;color:#FF738F" href='/mpacientes/{{xd.url}}'>Actualizar</a>
+              {%endif%}
+              {% endfor %}
+              <br>
+              <a style="text-decoration:none ;color:#FF738F" href='/eliminarPaciente/{{rows.id}}'>Eliminar</a>
+            </td>
+       
        
           </tr>
           {%elif session.rol_asignado == 3 %}
@@ -55,10 +65,18 @@
             <td>{{rows.correo}}</td>
             <td>{{rows.direccion}}</td>
             <td>{{rows.sexo}}</td>
-            <td><a style="text-decoration:none ;color:#FF738F" href='/mpacientes/{{rows.id}}'>Actualizar</a><br><a style="text-decoration:none ;color:#FF738F" href='/eliminarPaciente/{{rows.id}}'>Eliminar</a></td>
+            <td>
+              {% for xd in session.urls %}
+              {%if xd.id == rows.id %}
+              <a style="text-decoration:none ;color:#FF738F" href='/mpacientes/{{xd.url}}'>Actualizar</a>
+              {%endif%}
+              {% endfor %}
+              <br>
+              <a style="text-decoration:none ;color:#FF738F" href='/eliminarPaciente/{{rows.id}}'>Eliminar</a>
+            </td>
        
           </tr>
-          
+
           {%endif%}
           {% endfor %}
       </tbody>
