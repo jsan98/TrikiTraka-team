@@ -10,6 +10,9 @@ from helpers import apology, login_required
 #Agregar hora local
 from datetime import datetime
 from pytz import timezone
+from config import Config
+from models import db, pacientes
+
 
 app = Flask(__name__)
 
@@ -21,7 +24,8 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-
+app.config.from_object(Config)
+db.init_app(app)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -30,16 +34,21 @@ Session(app)
 
 db = SQL("sqlite:///florence.db")
 
+ROWS_PER_PAGE = 4
 
 @app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
     if request.method == "POST":
-        rows=db.execute("select * from pacientes")
+        rows=db.execute("select * from users")
 
         return redirect("/",rows=rows)
     else:
-        rows=db.execute("select * from pacientes")
+        #rows=db.execute("select * from pacientes")
+        page = request.args.get('page', 1, type=int)
+        
+        rows = pacientes.query.paginate(page=page, per_page=ROWS_PER_PAGE)
+        #print(rows)
         return render_template("dashboard.html",rows=rows)
 
 
@@ -80,6 +89,7 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
+        session["rol_asignado"] = rows[0]["rol_id"]
 
         # Redirect user to home page
         return redirect("/")
@@ -139,7 +149,7 @@ def register():
 @login_required
 def rpacientes():
     if request.method == "POST":
-        rows=db.execute("insert into pacientes (cedula,nombres,apellidos,correo,telefono,direccion,sexo) \
+        rows=db.execute("insert into users (cedula,nombres,apellidos,correo,telefono,direccion,sexo) \
             values (:cedula,:nombres,:apellidos,:correo,:telefono,:direccion,:sexo)",\
             cedula=request.form.get("cedula"),\
             nombres=request.form.get("nombres"),\
@@ -158,14 +168,14 @@ def rpacientes():
 @app.route('/eliminarPaciente/<int:id>')
 @login_required
 def eliminarPaciente(id):
-    db.execute("DELETE FROM pacientes where id=:idInv",idInv=id)
+    db.execute("DELETE FROM users where id=:idInv",idInv=id)
     return redirect(url_for('index'))
 
 @app.route('/mpacientes/<int:id>', methods=["GET","POST"])
 @login_required
 def mpacientes(id):
     if request.method == 'POST':
-        db.execute('UPDATE pacientes set cedula=:cedula, nombres = :nombres, apellidos = :apellidos, correo=:correo,telefono=:telefono,sexo=:sexo, \
+        db.execute('UPDATE users set rol_id = :rol, cedula=:cedula, nombres = :nombres, apellidos = :apellidos, correo=:correo,telefono=:telefono,sexo=:sexo, \
             direccion = :direccion WHERE id = :idInv', \
                 cedula=request.form.get("cedula"),\
                  nombres=request.form.get("nombres"),\
@@ -173,12 +183,16 @@ def mpacientes(id):
             correo=request.form.get("correo") ,  \
             telefono=request.form.get("telefono"),  \
             direccion=request.form.get("direccion"),\
-            sexo=request.form.get("sexo")
+            sexo=request.form.get("sexo"),
+            rol = request.form.get("rol")
             , idInv = id)
         return redirect(url_for('index'))
     else:
-        rows = db.execute('select * from pacientes where id = :idInv', idInv = id)
-        return render_template('mpacientes.html', rows=rows)
+        rows = db.execute('select * from users where id = :idInv', idInv = id)
+        rol = db.execute('select * from roles')
+        nrol = db.execute('select * from roles r inner join users u on u.rol_id=r.id where u.id = :idInv',idInv = id)
+        r = int(session["rol_asignado"])
+        return render_template('mpacientes.html', rows=rows,rol=rol,nrol=nrol, r = r == 3)
 
 
 

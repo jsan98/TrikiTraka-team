@@ -40,6 +40,18 @@
                     <option value="Prefiero no decir">Prefiero no decir</option>
             </select>
         </div>
+        {%if r%}
+        <div class="form-group">
+            <select class="form-control" name="rol">
+                {%for nrol in nrol%}
+                <option disabled selected value="{{nrol.id}}">{{nrol.nombre}}</option>
+                {%endfor%}
+                {%for rol in rol%}
+                    <option value="{{rol.id}}">{{rol.nombre}}</option>
+                {%endfor%}
+            </select>
+        </div>
+        {%endif%}
         <button class="btn btn-primary" style="background-color: #738FFF;" type="submit">Actualizar Paciente</button>
     </form>
 

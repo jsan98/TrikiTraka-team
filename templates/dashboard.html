@@ -18,9 +18,10 @@
 <div class="container">
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Escribe el nombre del paciente.." title="Type in a name"  style="background: url(&quot;static/p.png&quot;) left center no-repeat rgb(255, 255, 255);"/>
 
-<table class="table table-striped" id="myTable">
-    <thead class="thead-dark">
-        <tr>
+<div class="table-responsive">
+  <table class="table table-sm table-borderless mb-0">
+      <thead class="thead-dark">
+          <tr>
             <th scope="col">Cédula del paciente</th>
             <th scope="col">Nombres del paciente</th>
             <th scope="col">Apellidos del paciente</th>
@@ -29,11 +30,13 @@
             <th scope="col">Direccion</th>
             <th scope="col">Sexo</th>
             <th scope="col">Opciones</th>
-        </tr>
-    </thead>
-        {%for rows in rows%}
-        <tr>
-            <td scope="row">{{rows.cedula}}</td>
+          </tr>
+      </thead>
+      <tbody>
+          {% for rows in rows.items %}
+          {%if (rows.rol_id != 1) and (rows.rol_id != 3)%}
+          <tr>
+            <th scope="row">{{rows.cedula}}</th>
             <td>{{rows.nombres}}</td>
             <td>{{rows.apellidos}}</td>
             <td>{{rows.telefono}}</td>
@@ -41,11 +44,67 @@
             <td>{{rows.direccion}}</td>
             <td>{{rows.sexo}}</td>
             <td><a style="text-decoration:none ;color:#FF738F" href='/mpacientes/{{rows.id}}'>Actualizar</a><br><a style="text-decoration:none ;color:#FF738F" href='/eliminarPaciente/{{rows.id}}'>Eliminar</a></td>
-        </tr>
-        {%endfor%}
-    </table>
+       
+          </tr>
+          {%elif session.rol_asignado == 3 %}
+          <tr>
+            <th scope="row">{{rows.cedula}}</th>
+            <td>{{rows.nombres}}</td>
+            <td>{{rows.apellidos}}</td>
+            <td>{{rows.telefono}}</td>
+            <td>{{rows.correo}}</td>
+            <td>{{rows.direccion}}</td>
+            <td>{{rows.sexo}}</td>
+            <td><a style="text-decoration:none ;color:#FF738F" href='/mpacientes/{{rows.id}}'>Actualizar</a><br><a style="text-decoration:none ;color:#FF738F" href='/eliminarPaciente/{{rows.id}}'>Eliminar</a></td>
+       
+          </tr>
+          
+          {%endif%}
+          {% endfor %}
+      </tbody>
+  </table>
+<br>
+  <!-- Pagination Links-->
+<div class="text-right">
+  <a href="{{ url_for('index', page=rows.prev_num) }}"
+     class="btn btn-outline-dark 
+     {% if rows.page == 1 %}disabled{% endif %}">
+      &laquo;
+  </a>
+<!-- Loop through the number of pages to display a link for each-->
+  {% for page_num in rows.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+{% if page_num %}
+<!-- Check for the active page and set the link to "Active"-->
+          {% if rows.page == page_num %}
+          <a href="{{ url_for('index', page=page_num) }}"
+             class="btn btn-dark">
+              {{ page_num }}
+          </a>
+          {% else %}
+          <a href="{{ url_for('index', page=page_num) }}"
+             class="btn btn-outline-dark">
+              {{ page_num }}
+          </a>
+          {% endif %}
+      {% else %}
+          ...
+      {% endif %}
+  {% endfor %}
+  <a href="{{ url_for('index', page=rows.next_num) }}"
+     class="btn btn-outline-dark 
+     {% if rows.page == rows.pages %}disabled{% endif %}">
+      &raquo;
+  </a>
 </div>
-     <script>
+<p class="text-right mt-3">
+ Mostrando página {{ rows.page }} de {{ rows.pages }}
+</p>
+</div>
+
+</div>
+
+
+<script>
 function myFunction() {
   var input, filter, table, tr, td, i;
   input = document.getElementById("myInput");

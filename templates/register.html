@@ -363,11 +363,11 @@ p{
         let form = new Validation("register-form");
         // Validation Functions
         form.requireText("name", 4, 20, [" "], []);
-        form.requireText("name1", 1, 20, [" "], []);
-        form.requireText("name2", 1, 20, [" "], []);
-        form.requireText("name3", 1, 20, [" "], []);
-        form.requireText("name4", 1, 20, [" "], []);
-        form.requireText("name5", 1, 20, [" "], []);
+        form.requireText("name1", 1, 20, );
+        form.requireText("name2", 1, 20, );
+        form.requireText("name3", 1, 20, );
+        form.requireText("name4", 1, 20,);
+        form.requireText("name5", 1, 20,);
         form.requireEmail("email", 4, 30, [" "], ["@"]);
         form.registerPassword("password", 6, 20, [" "], [], "confirm");
     </script>
