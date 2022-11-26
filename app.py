@@ -12,7 +12,7 @@ from datetime import datetime
 from pytz import timezone
 from config import Config
 from models import db, pacientes
-
+from cartoonizer import *
 
 app = Flask(__name__)
 
@@ -64,11 +64,55 @@ def index():
 @app.route("/kiosco", methods=["GET", "POST"])
 def kiosco():
     if request.method == "POST":
+        doc = request.form.get("doc")
+        session["documento_numero"] = doc
 
-        return redirect("/")
+        return redirect("/kiosco2")
     else:
         #rows= db.execute("select * from users where id=:id",id=session["user_id"])
         return render_template("index.html")
+
+@app.route("/kiosco2", methods=["GET", "POST"])
+def kiosco2():
+    if request.method == "POST":
+
+        return redirect("/")
+    else:
+        rows= db.execute("select * from users where cedula=:id",id=session["documento_numero"])
+        
+        if not rows:
+            nombre = "Usuario"
+        else:
+            nombre = rows[0]["nombres"]
+        return render_template("avatar1.html",nombre = nombre)
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST':
+        #fs = request.files['snap'] # it raise error when there is no `snap` in form
+        fs = request.files.get('snap')
+        if fs:
+            print('FileStorage:', fs)
+            print('filename:', fs.filename)
+            fs.save('image.jpg')
+            img_cartoon = carton("image.jpg")
+            filename = 'image_cartoon.jpg'
+           # session["img"] = 
+            cv2.imwrite(filename, img_cartoon)
+            return 'Genial'
+        else:
+            return 'You forgot Snap!'
+    
+    return 'Hello World!'
+
+@app.route("/kiosco3", methods=["GET", "POST"])
+def kiosco3():
+    if request.method == "POST":
+
+        return redirect("/")
+    else:
+       
+        return render_template("avatar2.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -99,6 +143,7 @@ def login():
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
         session["rol_asignado"] = rows[0]["rol_id"]
+        #print(rows[0]["id"])
 
         # Redirect user to home page
         return redirect("/")
