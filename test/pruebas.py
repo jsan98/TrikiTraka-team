@@ -4,6 +4,7 @@ from flask import Flask, flash, redirect, render_template, request, session,url_
 from config import Config
 from models import db, pacientes
 from cs50 import SQL
+from werkzeug.security import check_password_hash, generate_password_hash
 db = SQL("sqlite:///florenceTest.db")
 
 class TestUrls(unittest.TestCase):
@@ -28,6 +29,12 @@ class TestCrud(unittest.TestCase):
         result = db.execute("Select * from users")
         result = (type(result))
         self.assertEqual(result,type(list()))
+
+class TestCrud(unittest.TestCase):
+    def test_password_hash_true(self):
+        encode = generate_password_hash("prueba")
+        decode = check_password_hash(encode,"prueba")
+        self.assertEqual(decode,True)
 
 if __name__ == '__main__':
     unittest.main()
