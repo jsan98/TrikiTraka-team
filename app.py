@@ -76,14 +76,34 @@ def kiosco():
 
 
 @app.route("/kiosco4", methods=["GET", "POST"])
-def kioscopaso():
+def kiosco4():
     if request.method == "POST":
        
 
         return redirect("/kiosco5")
     else:
         #rows= db.execute("select * from users where id=:id",id=session["user_id"])
-        return render_template("")
+        return render_template("explain.html")
+
+@app.route("/kiosco5", methods=["GET", "POST"])
+def kiosco5():
+    if request.method == "POST":
+       
+
+        return redirect("/kiosco5")
+    else:
+        #rows= db.execute("select * from users where id=:id",id=session["user_id"])
+        return render_template("start.html")
+
+@app.route("/kiosco6", methods=["GET", "POST"])
+def kiosco6():
+    if request.method == "POST":
+       
+
+        return redirect("/kiosco5")
+    else:
+        #rows= db.execute("select * from users where id=:id",id=session["user_id"])
+        return render_template("temp.html")
 
 @app.route("/kiosco2", methods=["GET", "POST"])
 def kiosco2():
@@ -120,7 +140,7 @@ def upload():
 def kiosco3():
     if request.method == "POST":
 
-        return redirect("/")
+        return redirect("/kiosco4")
     else:
         img_cartoon = carton("image.jpg")
             
